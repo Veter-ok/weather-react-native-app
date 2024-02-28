@@ -19,7 +19,7 @@ const style = StyleSheet.create({
 		height: 70,
 		position: "absolute",
 		top: 180,
-		left: 30,
+		left: 40,
 		backgroundColor: "rgb(245, 237, 194)",
 		borderRadius: 100,
 		shadowColor: 'rgb(245, 237, 194)',

@@ -1,12 +1,12 @@
 import React, {FunctionComponent as FC, useContext, useEffect, useState, createContext} from "react";
-import Clouds from "../UI/clouds/clouds";
-// import Rainfall from "../drawing/rainfall/rainfall";
+import Clouds from "../UI/clouds";
+import Rainfall from "../drawing/rainfall";
 import {WeatherOWAPIDataContext} from '../../context/WeatherDataProviderOWAPI'
 // import SnowFall from "../UI/showFall/snowFall";
 import Luminary from "../UI/luminary";
 import Hill from "../drawing/hill";
 import { CityType } from "../../types/CityTypes";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Clock from "../UI/Clock";
 
 interface IPictureThemeContext {
@@ -69,9 +69,9 @@ const PictureScreen:FC<IPropsPictureScreen> = ({city}) => {
 			<View style={StyleSheet.compose(style.frame, cloudCover == "overcast" ? style.overcatBackground : style[timeOfDay])}>
 				<Clock/>
 				<Luminary timeOfDay={timeOfDay} cloudcover={currentlyWeather.cloudcover}/>
-				{/* <Rainfall rain={currentlyWeather.rain} weather={currentlyWeather.weather}/>
-				<SnowFall snowFall={currentlyWeather.snowfall}/>
-				<Clouds/> */}
+				<Rainfall rain={currentlyWeather.rain} weather={currentlyWeather.weather}/>
+				{/* <SnowFall snowFall={currentlyWeather.snowfall}/> */}
+				<Clouds/>
 				<Hill type={`${season}-${timeOfDay}-${cloudCover}`}/>
 			</View>
 		</PictureThemeContext.Provider>

@@ -7,7 +7,7 @@ interface HillProps {
 }
 
 const Hill:FC<HillProps> = ({type}) => {
-	// const type = `${pictureTheme.season}-${pictureTheme.timeOfDay}-${pictureTheme.cloudCover}`
+
 	return (
 		<View>
 			<View style={StyleSheet.compose(StyleSheet.compose(style.hill, style.hill_1), {backgroundColor: colors_1[type]})}></View>

@@ -6,7 +6,7 @@ import { StyleSheet, Text } from "react-native"
 const Clock = () => {
 	const {currentlyWeather, setNewDate} = useContext(WeatherOWAPIDataContext)
 
-	setInterval(setNewDate,  100000)
+	// setInterval(setNewDate,  30000)
 
 	return (
 		<Text style={style.time}>{convertDateToTime(currentlyWeather.time)}</Text>

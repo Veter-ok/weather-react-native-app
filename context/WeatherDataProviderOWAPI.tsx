@@ -58,10 +58,11 @@ const WeatherDataOWAPIProvider:FC<IWeatherOWAPIDataProviderProps> = ({city, chil
 					const date = convertStringOWAPIToDate(new Date().toLocaleString("ru-RU", {timeZone: data.timezone}))
 					setCurrentlyTime(date)
 					setTimezone(data.timezone)
+					const localOffset = new Date().getTimezoneOffset() * 60
 					setCurrentlyWeather({
 						time: date,
-						sunrise: new Date((data.current.sunrise + data.timezone_offset) * 1000),
-						sunset: new Date((data.current.sunset + data.timezone_offset) * 1000),
+						sunrise: new Date((data.current.sunrise + data.timezone_offset + localOffset) * 1000),
+						sunset: new Date((data.current.sunset + data.timezone_offset + localOffset) * 1000),
 						weather: data.current.weather[0].description,
 						temperature: Math.round(data.current.temp - 273.15),
 						humidity: data.current.humidity,
