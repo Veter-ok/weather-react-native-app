@@ -1,5 +1,4 @@
 import {FunctionComponent as FC, useContext} from "react";
-// import { DarkModeContext } from "../../../context/DarkModeProvider";
 import { WeatherOWAPIDataContext } from "../../context/WeatherDataProviderOWAPI";
 import { CityType } from "../../types/CityTypes";
 import { convertDateToTime } from "../../utils/FormatDate";
@@ -36,7 +35,7 @@ export const WeatherMainBlock:FC<IPropsContent> = ({city}) => {
 const style = StyleSheet.create({
 	block: {
 		justifyContent: 'center',
-		top: -85,
+		top: -50,
 		width: 300,
 		height: 240,
 		marginLeft: "auto",

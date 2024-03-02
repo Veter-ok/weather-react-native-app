@@ -1,10 +1,9 @@
 import React, {FunctionComponent as FC, useContext } from "react";
 import WeatherMainBlock from "../UI/weatherMainBlock";
-// import { DarkModeContext } from "../../context/DarkModeProvider";
 import { CityType } from "../../types/CityTypes";
 import { Text, View } from "react-native";
 import WeatherHourlyBlock from "../UI/WeatherHourlyBlock";
-// import WeatherDailyBlock from "../UI/WeatherDailyBlock/WeatherDailyBlock";
+import WeatherDailyBlock from "../UI/WeatherDailyBlock";
 
 interface IPropsContent {
 	city: CityType
@@ -13,12 +12,14 @@ interface IPropsContent {
 export const Content:FC<IPropsContent> = ({city}) => {
 
 	return (
-		<View>
+		<View style={{backgroundColor: "white", marginTop: -50}}>
 			<WeatherMainBlock city={city}/>
-			<Text style={{fontSize: 24, top: -50}}>Hourly Weather</Text>
-			<WeatherHourlyBlock/>
-			<Text style={{fontSize: 24, top: -50}}>Daily Weather</Text>
-			{/* <WeatherDailyBlock/> */}
+			<View style={{marginHorizontal: 20}}>
+				<Text style={{fontSize: 24}}>Hourly Weather</Text>
+				<WeatherHourlyBlock/>
+				<Text style={{fontSize: 24}}>Daily Weather</Text>
+				<WeatherDailyBlock/>
+			</View>
 		</View>
 	)
 }

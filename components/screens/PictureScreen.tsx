@@ -5,7 +5,6 @@ import {WeatherOWAPIDataContext} from '../../context/WeatherDataProviderOWAPI'
 // import SnowFall from "../UI/showFall/snowFall";
 import Luminary from "../UI/luminary";
 import Hill from "../drawing/hill";
-import { CityType } from "../../types/CityTypes";
 import { StyleSheet, View } from "react-native";
 import Clock from "../UI/Clock";
 import SnowFall from "../drawing/snowFall";
@@ -22,11 +21,7 @@ export const PictureThemeContext = createContext<IPictureThemeContext>({
 	season: "summer"
 })
 
-interface IPropsPictureScreen {
-	city: CityType
-}
-
-const PictureScreen:FC<IPropsPictureScreen> = ({city}) => {
+const PictureScreen:FC = () => {
 	const {currentlyWeather} = useContext(WeatherOWAPIDataContext)
 	const [timeOfDay, setTimeOfDay] = useState<"morning" | "day"| "evening" | "night">("day")
 	const [cloudCover, setCloudcover] = useState<"clear" | "overcast">("clear")
@@ -70,7 +65,7 @@ const PictureScreen:FC<IPropsPictureScreen> = ({city}) => {
 		}else{
 			setTimeOfDay('night')
 		}
-	}, [cloudCover, currentlyWeather.cloudcover, currentlyWeather.snowDepth, currentlyWeather.sunrise, currentlyWeather.sunset, currentlyWeather.time, season, timeOfDay])
+	}, [cloudCover, currentlyWeather.cloudcover, currentlyWeather.snowDepth, currentlyWeather.sunrise, currentlyWeather.sunset, currentlyWeather.time, season])
 	
 	return (
 		<PictureThemeContext.Provider value={{timeOfDay: timeOfDay, cloudCover: cloudCover, season: season}}>

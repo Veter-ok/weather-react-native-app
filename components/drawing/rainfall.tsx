@@ -1,25 +1,24 @@
-import React, {FunctionComponent as FC, useRef, useEffect} from 'react'
-import { Animated, StyleSheet, Text, View } from 'react-native'
+import React, {FunctionComponent as FC, useRef, useEffect, useState} from 'react'
+import { Animated, StyleSheet, View } from 'react-native'
 
 interface IPropsRainfall {
 	rain: number
 	weather: string
 }
 
-
 const Rainfall:FC<IPropsRainfall> = ({rain, weather}) => {
-	const animArray = [useRef(new Animated.Value(0)).current]
+	const animArray:Animated.Value[] = []
 
-	const anim = () => {
+	const animInit = () => {
 		for(let i = 0; i < 15; i++){
 			animArray.push(useRef(new Animated.Value(0)).current)
 		}
 	}
 
-	anim()
+	animInit()
 
 	const startAnimation = (n: number) => {
-		for(let i = 0; i <= n; i++){
+		for(let i = 0; i <  Math.min(n, animArray.length); i++){
 			Animated.loop(
 				Animated.timing(animArray[i], {
 					toValue: 1,
@@ -33,23 +32,23 @@ const Rainfall:FC<IPropsRainfall> = ({rain, weather}) => {
 
 	const stopAnimtion = () => {
 		for(let i = 0; i < animArray.length; i++){
+			animArray[i].resetAnimation()
 			animArray[i].stopAnimation()
 		}
 	}
 
 	const createRain = () => {
-		let rainList = []
-		var count = 0
-		if (weather.includes("light") || weather.includes("heavy")){
+		let rainList:React.JSX.Element[] = []
+		let count = 0
+		if (weather.includes("light")){
 			count = 8
-			startAnimation(count)
-		}else if (weather.includes("moderate")){
+		}else if (weather.includes("moderate") || weather.includes("heavy")){
 			count = 15
-			startAnimation(count)
 		}
-		for(let i = 0; i < count; i++){
+		startAnimation(count)
+		for(let i = 0; i < Math.min(count, animArray.length); i++){
 			rainList.push(<Animated.View key={i} style={StyleSheet.compose(style.drop, {
-				left: Math.random() * (380 - 10) + 10,
+				left: Math.random() * (400 - 10) + 10,
 				transform: [
 					{translateY:animArray[i].interpolate({
 						inputRange:[0,1],
@@ -69,9 +68,7 @@ const Rainfall:FC<IPropsRainfall> = ({rain, weather}) => {
 	}
 
 	return (
-		<View>
-			{createRain()}
-		</View>
+		<View>{createRain()}</View>
 	)
 }
 

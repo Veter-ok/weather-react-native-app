@@ -32,7 +32,7 @@ export const colors_2:IColor = {
 	'summer-day-clear': 'rgb(70, 207, 134)',
 	'summer-day-overcast': 'rgb(50, 60, 91)',
 	'summer-evening-clear': 'rgb(135, 195, 135)',
-	'summer-evening-ovarcast': 'rgb(150, 180, 150)',
+	'summer-evening-overcast': 'rgb(150, 180, 150)',
 	'summer-night-overcast': 'rgb(50, 60, 91)',
 	'summer-night-clear': 'rgb(50, 60, 91)',
 }
