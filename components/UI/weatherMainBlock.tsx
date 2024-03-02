@@ -12,7 +12,6 @@ interface IPropsContent {
 
 export const WeatherMainBlock:FC<IPropsContent> = ({city}) => {
 	const {currentlyWeather} = useContext(WeatherOWAPIDataContext)
-	// const darkMode = useContext(DarkModeContext)
 
 	return (
 		<View style={style.block}>
@@ -26,7 +25,7 @@ export const WeatherMainBlock:FC<IPropsContent> = ({city}) => {
 				<Text style={style.text}>Humidity: {currentlyWeather.humidity}%</Text>
 				<Text style={style.text}>Cloudcover {currentlyWeather.cloudcover}%</Text>
 			</View>
-			<View>
+			<View style={style.timeBlock}>
 				<Text style={style.text}>Sunrise: {convertDateToTime(currentlyWeather.sunrise)}</Text>
 				<Text style={style.text}>Sunset: {convertDateToTime(currentlyWeather.sunset)}</Text>
 			</View>
@@ -36,15 +35,17 @@ export const WeatherMainBlock:FC<IPropsContent> = ({city}) => {
 
 const style = StyleSheet.create({
 	block: {
+		justifyContent: 'center',
 		top: -85,
 		width: 300,
-		height: 230,
+		height: 240,
+		marginLeft: "auto",
+		marginRight: "auto",
 		backgroundColor: "white",
 		shadowOffset: {width: 4, height: 8},
 		shadowColor: 'rgba(0, 0, 0, 0.1)',
 		shadowOpacity: 1,
 		shadowRadius: 11,
-		// box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
 	},
 	text: {
 		fontSize: 16,
@@ -65,6 +66,10 @@ const style = StyleSheet.create({
 		textAlign: "center",
 		marginTop: 10,
 		marginBottom: 10,
+	},
+	timeBlock: {
+		top: 10,
+		bottom: 10
 	}
 })
 

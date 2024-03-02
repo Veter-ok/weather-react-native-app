@@ -23,6 +23,7 @@ const style = StyleSheet.create({
 		position: "absolute",
 		width: 85,
 		height: 75,
+		zIndex: 100
 	},
 	cloudCircle: {
 		backgroundColor: "white",

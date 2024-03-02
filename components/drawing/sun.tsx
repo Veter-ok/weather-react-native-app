@@ -1,10 +1,27 @@
-import React, {FunctionComponent as FC} from 'react'
-import { StyleSheet, View } from 'react-native'
+import React, {FunctionComponent as FC, useEffect, useRef} from 'react'
+import {Animated, StyleSheet, View } from 'react-native'
 
 const Sun:FC = () => {
-  return (
-	<View style={style.sun}></View>
-  )
+	const riseAnim = useRef(new Animated.Value(0)).current;
+
+	useEffect(() => {
+		Animated.timing(riseAnim, {
+		  toValue: 1,
+		  duration: 1800,
+		  useNativeDriver: true,
+		}).start();
+	  }, [riseAnim]);
+
+	return (
+	<Animated.View style={StyleSheet.compose(style.sun, {
+		transform: [{
+			translateY: riseAnim.interpolate({
+			  inputRange: [0, 1],
+			  outputRange: [300, 0]
+			}),
+		}],
+	})}></Animated.View>
+	)
 }
 
 const style = StyleSheet.create({
@@ -19,10 +36,7 @@ const style = StyleSheet.create({
 		shadowOpacity: 0.8,
 		shadowRadius: 11,
 		borderRadius: 100,
-		zIndex: 5,
-		// animation-name: sun-rising,
-		// animation-duration: 2s,
-		// animation-fill-mode: forwards,
+		zIndex: 0,
 	}
 })
 

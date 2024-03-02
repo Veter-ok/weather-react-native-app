@@ -54,7 +54,7 @@ export const SearchCity:FC<IPropsSearchCity> = ({setCity}) => {
 	}
 
 	return (
-		<>
+		<View>
 			<Input 
 				value={currentlyCity} 
 				onChange={onChangeValue}
@@ -70,7 +70,7 @@ export const SearchCity:FC<IPropsSearchCity> = ({setCity}) => {
 			:
 				<></>
 			}
-		</>
+		</View>
 	)
 }
 

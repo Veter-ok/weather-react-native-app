@@ -8,6 +8,7 @@ import Hill from "../drawing/hill";
 import { CityType } from "../../types/CityTypes";
 import { StyleSheet, View } from "react-native";
 import Clock from "../UI/Clock";
+import SnowFall from "../drawing/snowFall";
 
 interface IPictureThemeContext {
 	timeOfDay: "morning" | "day"| "evening" | "night",
@@ -30,6 +31,7 @@ const PictureScreen:FC<IPropsPictureScreen> = ({city}) => {
 	const [timeOfDay, setTimeOfDay] = useState<"morning" | "day"| "evening" | "night">("day")
 	const [cloudCover, setCloudcover] = useState<"clear" | "overcast">("clear")
 	const [season, setSeason] = useState< "winter" | "summer">("summer")
+	const [isRain, setIsRain] = useState(false)
 
 	useEffect(() => {
 		const time = currentlyWeather.time
@@ -39,6 +41,12 @@ const PictureScreen:FC<IPropsPictureScreen> = ({city}) => {
 		day.setHours(sunrise.getHours() + 2)
 		const evening = new Date(sunset)
 		evening.setHours(sunset.getHours() - 2)
+
+		if (currentlyWeather.weather){
+			if (currentlyWeather.weather.includes("light") || currentlyWeather.weather.includes("heavy") || currentlyWeather.weather.includes("moderate")){
+				setIsRain(true)
+			}
+		}
 
 		if (currentlyWeather.snowDepth > 0.05){
 			setSeason('winter')
@@ -66,11 +74,15 @@ const PictureScreen:FC<IPropsPictureScreen> = ({city}) => {
 	
 	return (
 		<PictureThemeContext.Provider value={{timeOfDay: timeOfDay, cloudCover: cloudCover, season: season}}>
-			<View style={StyleSheet.compose(style.frame, cloudCover == "overcast" ? style.overcatBackground : style[timeOfDay])}>
+			<View style={StyleSheet.compose(style.frame, (cloudCover == "overcast" && timeOfDay !== "night")? style.overcatBackground : style[timeOfDay])}>
 				<Clock/>
 				<Luminary timeOfDay={timeOfDay} cloudcover={currentlyWeather.cloudcover}/>
-				<Rainfall rain={currentlyWeather.rain} weather={currentlyWeather.weather}/>
-				{/* <SnowFall snowFall={currentlyWeather.snowfall}/> */}
+				{isRain ?
+					<Rainfall rain={currentlyWeather.rain} weather={currentlyWeather.weather}/>
+					:
+					<></>
+				}
+				{currentlyWeather.snowfall > 0 ? <SnowFall/> : <></> }
 				<Clouds/>
 				<Hill type={`${season}-${timeOfDay}-${cloudCover}`}/>
 			</View>
@@ -81,7 +93,7 @@ export default PictureScreen
 
 const style = StyleSheet.create({
 	frame: {
-		zIndex: 0,
+		zIndex: -1,
 		width: "100%",
 		top: -50,
 		height: 500,

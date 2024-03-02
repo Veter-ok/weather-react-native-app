@@ -3,7 +3,7 @@ import WeatherMainBlock from "../UI/weatherMainBlock";
 // import { DarkModeContext } from "../../context/DarkModeProvider";
 import { CityType } from "../../types/CityTypes";
 import { Text, View } from "react-native";
-// import WeatherHourlyBlock from "../UI/WeatherHourlyBlock/WeatherHourlyBlock";
+import WeatherHourlyBlock from "../UI/WeatherHourlyBlock";
 // import WeatherDailyBlock from "../UI/WeatherDailyBlock/WeatherDailyBlock";
 
 interface IPropsContent {
@@ -11,14 +11,13 @@ interface IPropsContent {
 }
 
 export const Content:FC<IPropsContent> = ({city}) => {
-	// const darkMode = useContext(DarkModeContext)
 
 	return (
 		<View>
 			<WeatherMainBlock city={city}/>
-			<Text>Hourly Weather</Text>
-			{/* <WeatherHourlyBlock/> */}
-			<Text>Daily Weather</Text>
+			<Text style={{fontSize: 24, top: -50}}>Hourly Weather</Text>
+			<WeatherHourlyBlock/>
+			<Text style={{fontSize: 24, top: -50}}>Daily Weather</Text>
 			{/* <WeatherDailyBlock/> */}
 		</View>
 	)

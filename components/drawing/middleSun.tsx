@@ -1,11 +1,13 @@
-import React, {FunctionComponent as FC} from 'react'
-import { StyleSheet, View } from 'react-native'
+import React, {FunctionComponent as FC, useRef, useEffect} from 'react'
+import {Animated, StyleSheet, View } from 'react-native'
 
 interface MiddleSunProps {
 	timeOfDay: "morning" | "evening",
 }
 
 const MiddleSun:FC<MiddleSunProps> = ({timeOfDay}) => {
+	const riseAnim = useRef(new Animated.Value(0)).current;
+
 	const backgroundColor = {
 		"evening": "rgb(248, 204, 168)",
 		"morning": "rgb(248, 236, 168)"
@@ -15,11 +17,25 @@ const MiddleSun:FC<MiddleSunProps> = ({timeOfDay}) => {
 		"morning": "rgb(248, 236, 168)"
 	}
 
+	useEffect(() => {
+		Animated.timing(riseAnim, {
+		  toValue: 1,
+		  duration: 1800,
+		  useNativeDriver: true,
+		}).start();
+	  }, [riseAnim]);
+
 	return (
-		<View style={StyleSheet.compose(style.sun, {
+		<Animated.View style={StyleSheet.compose(style.sun, {
 			backgroundColor: backgroundColor[timeOfDay],
 			shadowColor: shadowColor[timeOfDay],
-		})}></View>
+			transform: [{
+				translateY: riseAnim.interpolate({
+				  inputRange: [0, 1],
+				  outputRange: [200, 0]
+				}),
+			}],
+		})}></Animated.View >
 	)
 }
 

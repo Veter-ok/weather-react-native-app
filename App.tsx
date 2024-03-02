@@ -1,10 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView} from 'react-native';
-import { Input } from './components/UI/Input';
+import { SafeAreaView, ScrollView, StyleSheet, View} from 'react-native';
 import { WeatherDataProvider } from './context/WeatherDataProvider';
 import { SearchCity } from './components/UI/SearchCity';
-import { CityType } from './types/CityTypes';
 import PictureScreen from './components/screens/PictureScreen';
 import Content from './components/content/content';
 import { WeatherDataOWAPIProvider } from './context/WeatherDataProviderOWAPI';
@@ -18,12 +15,13 @@ export default function App() {
   return (
     <WeatherDataProvider coordinates={city.coordinates}>
       <WeatherDataOWAPIProvider city={city}>
-        <View style={styles.container}>
-          <SearchCity setCity={setCity}/>
-          <PictureScreen city={city}/>
-          <Content city={city}/>
-          {/* <Input value={text} onChange={setText} onKeyDown={setKey}/> */}
-        </View>
+        <SafeAreaView>
+          <ScrollView style={{top: -50}}>
+            <SearchCity setCity={setCity}/>
+            <PictureScreen city={city}/>
+            <Content city={city}/>
+          </ScrollView>
+        </SafeAreaView>
       </WeatherDataOWAPIProvider>
     </WeatherDataProvider>
   );

@@ -1,15 +1,33 @@
-import React, {FunctionComponent as FC} from 'react'
-import { StyleSheet, View } from 'react-native'
+import React, {FunctionComponent as FC, useEffect, useRef} from 'react'
+import { Animated, StyleSheet, View } from 'react-native'
 
 const Moon:FC = () => {
+
+	const riseAnim = useRef(new Animated.Value(0)).current;
+
+	useEffect(() => {
+		Animated.timing(riseAnim, {
+			toValue: 1,
+			duration: 1500,
+			useNativeDriver: true,
+		}).start();
+	}, [riseAnim]);
+
   return (
-	<View style={style.moon}>
+	<Animated.View style={StyleSheet.compose(style.moon, {
+		transform: [{
+			translateY: riseAnim.interpolate({
+			  inputRange: [0, 1],
+			  outputRange: [300, 0]
+			}),
+		}],
+	})}>
 		<View style={StyleSheet.compose(style.spot, style.spot1)}></View>
 		<View style={StyleSheet.compose(style.spot, style.spot2)}></View>
 		<View style={StyleSheet.compose(style.spot, style.spot3)}></View>
 		<View style={StyleSheet.compose(style.spot, style.spot4)}></View>
 		<View style={StyleSheet.compose(style.spot, style.spot5)}></View>
-	</View>
+	</Animated.View>
   )
 }
 
@@ -25,10 +43,7 @@ const style = StyleSheet.create({
 		shadowColor: 'rgb(245, 237, 194)',
 		shadowOpacity: 0.5,
 		shadowRadius: 7,
-		zIndex: 5,
-		// animation-name: moon-risig,
-		// animation-duration: 2s,
-		// animation-fill-mode: forwards,
+		zIndex: 0,
 	},
 	spot: {
 		borderRadius: 100,

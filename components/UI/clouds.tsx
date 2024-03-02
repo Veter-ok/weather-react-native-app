@@ -5,7 +5,7 @@ import { View } from 'react-native'
 const Clouds:FC = () => {
 	return (
 		<View>
-			<Cloud left={20} top={150}/>
+			<Cloud left={15} top={208}/>
 			<Cloud left={200} top={220}/>
 			<Cloud left={290} top={125}/>
 		</View>

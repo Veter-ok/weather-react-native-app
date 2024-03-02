@@ -15,7 +15,6 @@ export const Input:FC<IInputProps> = ({value, onChange, onKeyDown}) => {
 				style={style.input}
 				value={value} 
 				onChangeText={(text) => onChange(text)}
-				// onKeyDown={(e) => onKeyDown(e.key)}
 			/>
 		</>
 	)
@@ -24,14 +23,15 @@ export const Input:FC<IInputProps> = ({value, onChange, onKeyDown}) => {
 const style = StyleSheet.create({
 	input: {
 		position: "absolute",
-		top: 70,
+		top: 30,
+		left: "21%",
 		color: "white",
 		textAlign: "center",
 		fontSize: 16,
 		borderWidth: 2,
 		borderColor: "white",
 		zIndex: 10,
-		width: "60%",
+		width: "58%",
 		height: 35,
 		borderRadius: 10,
 		backgroundColor: "transparent"
