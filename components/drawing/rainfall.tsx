@@ -2,11 +2,10 @@ import React, {FunctionComponent as FC, useRef, useEffect, useState} from 'react
 import { Animated, StyleSheet, View } from 'react-native'
 
 interface IPropsRainfall {
-	rain: number
 	weather: string
 }
 
-const Rainfall:FC<IPropsRainfall> = ({rain, weather}) => {
+const Rainfall:FC<IPropsRainfall> = ({weather}) => {
 	const animArray:Animated.Value[] = []
 
 	const animInit = () => {
@@ -48,7 +47,7 @@ const Rainfall:FC<IPropsRainfall> = ({rain, weather}) => {
 		startAnimation(count)
 		for(let i = 0; i < Math.min(count, animArray.length); i++){
 			rainList.push(<Animated.View key={i} style={StyleSheet.compose(style.drop, {
-				left: Math.random() * (400 - 10) + 10,
+				left: Math.random() * (380 - 10) + 10,
 				transform: [
 					{translateY:animArray[i].interpolate({
 						inputRange:[0,1],
@@ -78,9 +77,9 @@ const style = StyleSheet.create({
 		backgroundColor: "rgb(84, 84, 250)",
 		height: 15,
 		width: 10,
-		top: -200,
+		top: -250,
 		borderRadius: 50,
-	}
+	},
 })
 
 export default Rainfall

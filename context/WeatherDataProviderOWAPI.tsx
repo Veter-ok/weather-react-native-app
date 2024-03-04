@@ -7,7 +7,7 @@ import {REACT_APP_OW_API} from "@env"
 
 interface IWeatherOWAPIDataProviderProps {
 	city: CityType
-	children: JSX.Element
+	children: JSX.Element[]
 }
 
 const defaultCurrentlyWeather:ICurrentlyWeatherData = {

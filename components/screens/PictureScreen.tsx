@@ -2,12 +2,11 @@ import React, {FunctionComponent as FC, useContext, useEffect, useState, createC
 import Clouds from "../UI/clouds";
 import Rainfall from "../drawing/rainfall";
 import {WeatherOWAPIDataContext} from '../../context/WeatherDataProviderOWAPI'
-// import SnowFall from "../UI/showFall/snowFall";
 import Luminary from "../UI/luminary";
 import Hill from "../drawing/hill";
-import { StyleSheet, View } from "react-native";
+import {StyleSheet, View } from "react-native";
 import Clock from "../UI/Clock";
-import SnowFall from "../drawing/snowFall";
+import SnowFall from "../drawing/snowfall";
 
 interface IPictureThemeContext {
 	timeOfDay: "morning" | "day"| "evening" | "night",
@@ -38,7 +37,7 @@ const PictureScreen:FC = () => {
 		evening.setHours(sunset.getHours() - 2)
 
 		if (currentlyWeather.weather){
-			if (currentlyWeather.weather.includes("light") || currentlyWeather.weather.includes("heavy") || currentlyWeather.weather.includes("moderate")){
+			if (currentlyWeather.weather.includes("rain")){
 				setIsRain(true)
 			}
 		}
@@ -72,12 +71,8 @@ const PictureScreen:FC = () => {
 			<View style={StyleSheet.compose(style.frame, (cloudCover == "overcast" && timeOfDay !== "night")? style.overcatBackground : style[timeOfDay])}>
 				<Clock/>
 				<Luminary timeOfDay={timeOfDay} cloudcover={currentlyWeather.cloudcover}/>
-				{isRain ?
-					<Rainfall rain={currentlyWeather.rain} weather={currentlyWeather.weather}/>
-					:
-					<></>
-				}
-				{currentlyWeather.snowfall > 0 ? <SnowFall/> : <></> }
+				{isRain ? <Rainfall weather={currentlyWeather.weather}/> : <></> }
+				{currentlyWeather.snowfall > 0 ? <SnowFall weather={currentlyWeather.weather}/> : <></> }
 				<Clouds/>
 				<Hill type={`${season}-${timeOfDay}-${cloudCover}`}/>
 			</View>
