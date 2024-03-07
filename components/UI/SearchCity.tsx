@@ -80,7 +80,7 @@ const style = StyleSheet.create({
 		width: "50%",
 		height: 180,
 		top: 80,
-		left: 100,
+		left: "25%",
 		padding: 5,
 		backgroundColor: "white",
 		borderRadius: 15,

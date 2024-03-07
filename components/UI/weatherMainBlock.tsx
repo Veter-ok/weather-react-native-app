@@ -36,7 +36,7 @@ const style = StyleSheet.create({
 	block: {
 		justifyContent: 'center',
 		top: -50,
-		width: 300,
+		width: "80%",
 		height: 240,
 		marginLeft: "auto",
 		marginRight: "auto",

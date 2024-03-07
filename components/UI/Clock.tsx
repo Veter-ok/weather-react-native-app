@@ -21,7 +21,7 @@ const style = StyleSheet.create({
 		color: "white",
 		textAlign: "right",
 		top: 85,
-		left: 320,
+		left: "81%",
 	}
 })
 

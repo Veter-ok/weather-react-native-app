@@ -22,40 +22,40 @@ const Hill:FC<HillProps> = ({type}) => {
 
 const style = StyleSheet.create({
 	hill: {
-		width: 270,
-		height: 300,
+		width: "75%",
+		height: 700,
 		borderRadius: 999,
 		position: "absolute",
 		backgroundColor: "rgb(70, 207, 134)"
 	},
 	hill_1: {
 		top: 380,
-		left: -70,
+		left: "-20%", // -70
 		zIndex: 10,
 	},
 	hill_2: {
 		top: 350,
-		left: 80,
+		left: "20%", // 80
 		zIndex: 10,
 	},
 	hill_3: {
 		top: 380,
-		left: 200,
+		left: "60%", // 200
 		zIndex: 10,
 	},
 	hill_4: {
 		top: 400,
-		left: -70,
+		left: "-20%", // -70
 		zIndex: 10,
 	},
 	hill_5: {
-		top: 380,
-		left: 90,
+		top: 400,
+		left: "60%", // 90
 		zIndex: 10,
 	},
 	hill_6: {
-		top: 420,
-		left: 200,
+		top: 375,
+		left: "21%", // 90
 		zIndex: 10,
 	},
 })

@@ -6,7 +6,7 @@ import Luminary from "../UI/luminary";
 import Hill from "../drawing/hill";
 import {StyleSheet, View } from "react-native";
 import Clock from "../UI/Clock";
-import SnowFall from "../drawing/snowfall";
+import SnowFall from "../drawing/snowFall";
 
 interface IPictureThemeContext {
 	timeOfDay: "morning" | "day"| "evening" | "night",
