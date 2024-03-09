@@ -69,7 +69,7 @@ const PictureScreen:FC = () => {
 	return (
 		<PictureThemeContext.Provider value={{timeOfDay: timeOfDay, cloudCover: cloudCover, season: season}}>
 			<View style={StyleSheet.compose(style.frame, (cloudCover == "overcast" && timeOfDay !== "night")? style.overcatBackground : style[timeOfDay])}>
-				<Clock/>
+				{/* <Clock/> */}
 				<Luminary timeOfDay={timeOfDay} cloudcover={currentlyWeather.cloudcover}/>
 				{isRain ? <Rainfall weather={currentlyWeather.weather}/> : <></> }
 				{currentlyWeather.snowfall > 0 ? <SnowFall weather={currentlyWeather.weather}/> : <></> }
