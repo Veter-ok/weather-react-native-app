@@ -22,7 +22,7 @@ export default function App() {
           <ScrollView>
             <SearchCity setCity={setCity}/>
             <PictureScreen/>
-            {/* <Content city={city}/> */}
+            <Content city={city}/>
           </ScrollView>
         </SafeAreaView>
       </WeatherDataOWAPIProvider>
