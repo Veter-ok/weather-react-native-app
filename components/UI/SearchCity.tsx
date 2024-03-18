@@ -2,7 +2,6 @@ import { View, StyleSheet, Text, FlatList, ScrollView} from 'react-native';
 import { CityType } from '../../types/CityTypes';
 import { Input } from './Input';
 import React, {FunctionComponent as FC, useState} from "react";
-import {REACT_APP_OW_API} from "@env"
 
 interface IPropsSearchCity {
 	setCity: (param: CityType) => void
@@ -37,7 +36,7 @@ export const SearchCity:FC<IPropsSearchCity> = ({setCity}) => {
 	}
 
 	const sendRequest = async (value: string, isLast:boolean) => {
-		await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${value}&limit=5&appid=${REACT_APP_OW_API}`)
+		await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${value}&limit=5&appid=${process.env.EXPO_PUBLIC_REACT_APP_OW_API}`)
 			.then((response) => response.json())
 			.then((data) => {
 				if (isLast){

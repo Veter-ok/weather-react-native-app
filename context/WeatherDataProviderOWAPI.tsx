@@ -3,7 +3,6 @@ import {ICurrentlyWeatherData } from "../types/weatherDataType";
 import { OPEN_WEATHER_API_URL } from "../api/api";
 import { CityType } from "../types/CityTypes";
 import { convertStringOWAPIToDate } from "../utils/FormatDate";
-import {REACT_APP_OW_API} from "@env"
 
 interface IWeatherOWAPIDataProviderProps {
 	city: CityType
@@ -52,7 +51,7 @@ const WeatherDataOWAPIProvider:FC<IWeatherOWAPIDataProviderProps> = ({city, chil
 	}
 
 	const fetchWeather = useCallback(async () => {
-		await fetch(`${OPEN_WEATHER_API_URL}onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=hourly,daily&appid=${REACT_APP_OW_API}`)
+		await fetch(`${OPEN_WEATHER_API_URL}onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=hourly,daily&appid=${process.env.EXPO_PUBLIC_REACT_APP_OW_API}`)
 			.then(response => {
 				response.json().then(data => {
 					const date = convertStringOWAPIToDate(new Date().toLocaleString("ru-RU", {timeZone: data.timezone}))
