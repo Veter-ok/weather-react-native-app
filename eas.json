@@ -5,17 +5,16 @@
   "build": {
     "development": {
       "developmentClient": true,
-      "distribution": "internal",
-      "production": {
-        "env": {
-          "EXPO_PUBLIC_REACT_APP_OW_API": "7758610735a1cac011a6f10181507c87"
-        }
-      }
+      "distribution": "internal"
     },
     "preview": {
       "distribution": "internal"
     },
-    "production": {}
+    "production": {
+      "env": {
+        "EXPO_PUBLIC_REACT_APP_OW_API": "7758610735a1cac011a6f10181507c87"
+      }
+    }
   },
   "submit": {
     "production": {}
