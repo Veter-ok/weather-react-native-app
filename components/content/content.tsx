@@ -12,7 +12,7 @@ interface IPropsContent {
 export const Content:FC<IPropsContent> = ({city}) => {
 
 	return (
-		<View style={{backgroundColor: "white", marginTop: -50}}>
+		<View style={{backgroundColor: "white", marginTop: -50, paddingBottom: 60}}>
 			<WeatherMainBlock city={city}/>
 			<View style={{marginHorizontal: 20}}>
 				<Text style={{fontSize: 24}}>Hourly Weather</Text>

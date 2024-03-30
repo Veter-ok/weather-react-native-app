@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SafeAreaView, ScrollView, StatusBar, View} from 'react-native';
+import {ScrollView} from 'react-native';
 import { WeatherDataProvider } from './context/WeatherDataProvider';
 import { SearchCity } from './components/UI/SearchCity';
 import PictureScreen from './components/screens/PictureScreen';
@@ -18,13 +18,11 @@ export default function App() {
     <WeatherDataProvider coordinates={city.coordinates}>
       <WeatherDataOWAPIProvider city={city}>
         <CustomStatusBar/>
-        <SafeAreaView>
           <ScrollView>
             <SearchCity setCity={setCity}/>
             <PictureScreen/>
             <Content city={city}/>
           </ScrollView>
-        </SafeAreaView>
       </WeatherDataOWAPIProvider>
     </WeatherDataProvider>
   );

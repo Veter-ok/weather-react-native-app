@@ -43,6 +43,7 @@ const style = StyleSheet.create({
 		shadowColor: 'rgb(245, 237, 194)',
 		shadowOpacity: 0.5,
 		shadowRadius: 7,
+		elevation: 3,
 		zIndex: 0,
 	},
 	spot: {

@@ -49,10 +49,8 @@ const style = StyleSheet.create({
 		shadowOpacity: 0.9,
 		shadowRadius: 13,
 		borderRadius: 100,
+		elevation: 3,
 		zIndex: 0,
-		// animation-name: sun-rising,
-		// animation-duration: 2s,
-		// animation-fill-mode: forwards,
 	}
 })
 

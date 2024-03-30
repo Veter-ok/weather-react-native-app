@@ -1,9 +1,13 @@
-interface IColor { 
-	[key: string]: string
+export const backgroundColors:IColor = {
+	'day-overcast': 'rgb(151, 155, 161)', 
+	'day-clear': 'rgb(65, 106, 218)',
+	'evening-overcast': 'rgb(171, 161, 157)',
+	'evening-clear': 'rgb(104, 114, 142)',
+	'night-clear': 'rgb(27, 34, 54)',
+	'night-overcast': 'rgb(27, 34, 54)',
 }
 
-
-export const colors_1:IColor = {
+export const HillsColors1:IColor = {
 	'winter-day-overcast': 'rgb(240, 240, 240)', 
 	'winter-day-clear': 'rgb(240, 240, 240)',
 	'winter-evening-overcast': 'rgb(77, 77, 77)',
@@ -20,7 +24,7 @@ export const colors_1:IColor = {
 	'summer-night-clear': 'rgb(39, 49, 77)'
 }
 
-export const colors_2:IColor = {
+export const HillsColors2:IColor = {
 	'winter-day-overcast': 'rgb(250, 250, 250)',
 	'winter-day-clear': 'rgb(250, 250, 250)',
 	'winter-evening-overcast': 'rgb(136, 132, 132)',

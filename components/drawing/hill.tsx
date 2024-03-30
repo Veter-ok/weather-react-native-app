@@ -1,5 +1,5 @@
 import {FunctionComponent as FC, useContext} from 'react'
-import { colors_1, colors_2 } from './colors'
+import { HillsColors1, HillsColors2 } from '../../styles/colors'
 import { StyleSheet, View } from 'react-native'
 
 interface HillProps {
@@ -10,12 +10,12 @@ const Hill:FC<HillProps> = ({type}) => {
 
 	return (
 		<View>
-			<View style={StyleSheet.compose(StyleSheet.compose(style.hill, style.hill_1), {backgroundColor: colors_1[type]})}></View>
-			<View style={StyleSheet.compose(StyleSheet.compose(style.hill, style.hill_2), {backgroundColor: colors_1[type]})}></View>
-			<View style={StyleSheet.compose(StyleSheet.compose(style.hill, style.hill_3), {backgroundColor: colors_1[type]})}></View>
-			<View style={StyleSheet.compose(StyleSheet.compose(style.hill, style.hill_4), {backgroundColor: colors_2[type]})}></View>
-			<View style={StyleSheet.compose(StyleSheet.compose(style.hill, style.hill_5), {backgroundColor: colors_2[type]})}></View>
-			<View style={StyleSheet.compose(StyleSheet.compose(style.hill, style.hill_6), {backgroundColor: colors_2[type]})}></View>
+			<View style={StyleSheet.compose([style.hill, style.hill_1], {backgroundColor: HillsColors1[type]})}></View>
+			<View style={StyleSheet.compose([style.hill, style.hill_2], {backgroundColor: HillsColors1[type]})}></View>
+			<View style={StyleSheet.compose([style.hill, style.hill_3], {backgroundColor: HillsColors1[type]})}></View>
+			<View style={StyleSheet.compose([style.hill, style.hill_4], {backgroundColor: HillsColors2[type]})}></View>
+			<View style={StyleSheet.compose([style.hill, style.hill_5], {backgroundColor: HillsColors2[type]})}></View>
+			<View style={StyleSheet.compose([style.hill, style.hill_6], {backgroundColor: HillsColors2[type]})}></View>
 		</View>
 	)
 }

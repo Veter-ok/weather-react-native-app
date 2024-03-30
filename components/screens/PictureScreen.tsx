@@ -7,6 +7,7 @@ import Hill from "../drawing/hill";
 import {StyleSheet, View } from "react-native";
 import Clock from "../UI/Clock";
 import SnowFall from "../drawing/snowFall";
+import { backgroundColors } from "../../styles/colors";
 
 interface IPictureThemeContext {
 	timeOfDay: "morning" | "day"| "evening" | "night",
@@ -65,10 +66,10 @@ const PictureScreen:FC = () => {
 			setTimeOfDay('night')
 		}
 	}, [cloudCover, currentlyWeather.cloudcover, currentlyWeather.snowDepth, currentlyWeather.sunrise, currentlyWeather.sunset, currentlyWeather.time, season])
-	
+
 	return (
 		<PictureThemeContext.Provider value={{timeOfDay: timeOfDay, cloudCover: cloudCover, season: season}}>
-			<View style={StyleSheet.compose(style.frame, (cloudCover == "overcast" && timeOfDay !== "night")? style.overcatBackground : style[timeOfDay])}>
+			<View style={[style.frame, {backgroundColor: backgroundColors[`${timeOfDay}-${cloudCover}`]}]}>
 				{/* <Clock/> */}
 				<Luminary timeOfDay={timeOfDay} cloudcover={currentlyWeather.cloudcover}/>
 				{isRain ? <Rainfall weather={currentlyWeather.weather}/> : <></> }
@@ -88,20 +89,5 @@ const style = StyleSheet.create({
 		top: -50,
 		height: 500,
 		overflow: "hidden",
-	},
-	overcatBackground: {
-		backgroundColor: "rgb(79, 83, 94)"
-	},
-	morning: {
-		backgroundColor: "rgb(154, 167, 206)",
-	},
-	day: {
-		backgroundColor: "rgb(65, 106, 218)",
-	},
-	evening: {
-		backgroundColor: "rgb(104, 114, 142)",
-	},
-	night: {
-		backgroundColor: "rgb(27, 34, 54)",
 	},
 })

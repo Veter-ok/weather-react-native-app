@@ -7,7 +7,7 @@ export const WeatherDailyBlock:FC = () => {
 	const {dailyWeather} = useContext(WeatherDataContext)
 
 	return (
-		<ScrollView horizontal>
+		<ScrollView horizontal style={{padding: 20}}>
 			{dailyWeather.temperatures_max.slice(0, 6).map((value, index) => 
 				<View key={index} style={styles.block}>
 					<View>
@@ -25,15 +25,17 @@ export const WeatherDailyBlock:FC = () => {
 
 const styles = StyleSheet.create({
 	block: {
-		marginVertical: 20,
+		marginVertical: 15,
 		marginRight: 40,
 		padding: 20,
-		height: "82%",
+		height: "80%",
 		width: "15%",
 		borderRadius: 10,
-		shadowOffset: {width: 4, height: 8},
-		shadowColor: 'rgba(0, 0, 0, 0.1)',
-		shadowOpacity: 1,
+		shadowOffset: {width: 8, height: 8},
+		shadowColor: 'rgba(0, 0, 0, 0.2)',
+		// shadowColor: 'black',
+		elevation: 5,
+		shadowOpacity: 2,
 		shadowRadius: 11,
 		backgroundColor: "white",
 	}

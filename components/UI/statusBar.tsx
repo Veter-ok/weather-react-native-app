@@ -1,6 +1,7 @@
 import { SafeAreaView, StatusBar, StyleSheet, View } from "react-native"
 import { WeatherOWAPIDataContext } from "../../context/WeatherDataProviderOWAPI"
 import { useContext, useEffect, useState } from "react"
+import { backgroundColors } from "../../styles/colors"
 
 const CustomStatusBar = () => {
 	const {currentlyWeather} = useContext(WeatherOWAPIDataContext)
@@ -35,7 +36,7 @@ const CustomStatusBar = () => {
 	}, [currentlyWeather.sunrise, currentlyWeather.sunset, currentlyWeather.time])
 
 	return (
-		<View style={StyleSheet.compose({height: StatusBar.currentHeight}, (cloudCover == "overcast" && timeOfDay !== "night")? style.overcatBackground : style[timeOfDay])}>
+		<View style={[{height: StatusBar.currentHeight}, {backgroundColor: backgroundColors[`${timeOfDay}-${cloudCover}`]}]}>
             <SafeAreaView>
               <StatusBar translucent barStyle="light-content"/>
             </SafeAreaView>

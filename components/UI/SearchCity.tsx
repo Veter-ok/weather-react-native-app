@@ -60,12 +60,18 @@ export const SearchCity:FC<IPropsSearchCity> = ({setCity}) => {
 				onKeyDown={EnderDown}
 			/>
 			{cities.length > 1 ?
-				<FlatList 
-					style={style.results}
-					data={cities} 
-					renderItem={({item}) => <Text onPress={(e) => chooseCity(item)} style={style.cityBlock}>{item.name}, {item.country}</Text>}
-					// keyExtractor={}
-				/>
+				// <FlatList 
+				// 	style={style.results}
+				// 	data={cities} 
+				// 	renderItem={({item}) => <Text onPress={(e) => chooseCity(item)} style={style.cityBlock}>{item.name}, {item.country}</Text>}
+				// />
+				<View style={style.results}>
+					{cities.map((item) => 
+						<View>
+							<Text onPress={(e) => chooseCity(item)} style={style.cityBlock}>{item.name}, {item.country}</Text>
+						</View>
+					)}
+				</View>
 				:
 				<></>
 			}
@@ -80,16 +86,15 @@ const style = StyleSheet.create({
 		height: 180,
 		top: 80,
 		left: "25%",
-		padding: 5,
+		padding: 10,
 		backgroundColor: "white",
 		borderRadius: 15,
 		zIndex: 10,
 	},
 	cityBlock: {
 		height: 30,
-		width: "95%",
-		padding: 10,
+		width: "100%",
+		marginTop: 3,
 		borderRadius: 10,
-		overflow: "hidden"
 	}
 })

@@ -27,7 +27,7 @@ export const WeatherHourlyBlock:FC = () => {
 	}
 
 	return (
-		<ScrollView horizontal>
+		<ScrollView horizontal style={{padding: 20}}>
 			{hourlyWeather.temperatures.slice(firstIndex, firstIndex + 6).map((value, index) => 
 				<View key={index} style={styles.block} onTouchStart={() => setCurrentlyWeather(newCurrentlyWeanter(firstIndex + index))}>
 					<View>
@@ -46,16 +46,18 @@ export const WeatherHourlyBlock:FC = () => {
 
 const styles = StyleSheet.create({
 	block: {
-		marginVertical: 20,
+		marginVertical: 15,
 		marginRight: 40,
 		padding: 20,
 		height: "80%",
 		width: "15%",
 		borderRadius: 10,
-		shadowOffset: {width: 4, height: 8},
-		shadowColor: 'rgba(0, 0, 0, 0.1)',
-		shadowOpacity: 1,
-		shadowRadius: 11,
+		shadowOffset: {width: 10, height: 8},
+		shadowColor: 'rgba(0, 0, 0, 0.3)',
+		// shadowColor: 'black',
+		elevation: 5,
+		shadowOpacity: 2,
+		shadowRadius: 10,
 		backgroundColor: "white",
 	}
 })

@@ -33,9 +33,10 @@ const style = StyleSheet.create({
 		left: 40,
 		backgroundColor: "rgb(248, 236, 168)",
 		shadowColor: 'rgb(248, 236, 168),',
-		shadowOpacity: 0.8,
-		shadowRadius: 11,
-		borderRadius: 100,
+		shadowOpacity: 1,
+		shadowRadius: 10,
+		borderRadius: 50,
+		elevation: 8,
 		zIndex: 0,
 	}
 })
