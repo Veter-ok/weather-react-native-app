@@ -1,9 +1,14 @@
-import { SafeAreaView, StatusBar, StyleSheet, View } from "react-native"
+import { SafeAreaView, StatusBar, View } from "react-native"
 import { WeatherOWAPIDataContext } from "../../context/WeatherDataProviderOWAPI"
 import { useContext, useEffect, useState } from "react"
+import { FunctionComponent as FC } from "react" 
 import { backgroundColors } from "../../styles/colors"
 
-const CustomStatusBar = () => {
+interface ICustomStatusBar {
+	backgroundColor: boolean
+}
+
+const CustomStatusBar:FC<ICustomStatusBar> = ({backgroundColor}) => {
 	const {currentlyWeather} = useContext(WeatherOWAPIDataContext)
 	const [timeOfDay, setTimeOfDay] = useState<"morning" | "day"| "evening" | "night">("day")
 	const [cloudCover, setCloudcover] = useState<"clear" | "overcast">("clear")
@@ -33,33 +38,17 @@ const CustomStatusBar = () => {
 		}else{
 			setTimeOfDay('night')
 		}
-	}, [currentlyWeather.sunrise, currentlyWeather.sunset, currentlyWeather.time])
+	}, [currentlyWeather.sunrise, currentlyWeather.sunset, currentlyWeather.time, backgroundColor])
+
+
 
 	return (
-		<View style={[{height: StatusBar.currentHeight}, {backgroundColor: backgroundColors[`${timeOfDay}-${cloudCover}`]}]}>
-            <SafeAreaView>
-              <StatusBar translucent barStyle="light-content"/>
-            </SafeAreaView>
+		<View style={[{height: StatusBar.currentHeight}]}>
+            {/* <SafeAreaView> */}
+              <StatusBar translucent barStyle="light-content" backgroundColor={backgroundColor ? "transparent" : backgroundColors[`${timeOfDay}-${cloudCover}`]}/>
+            {/* </SafeAreaView> */}
         </View>
 	)
 }
-
-const style = StyleSheet.create({
-	overcatBackground: {
-		backgroundColor: "rgb(79, 83, 94)"
-	},
-	morning: {
-		backgroundColor: "rgb(154, 167, 206)",
-	},
-	day: {
-		backgroundColor: "rgb(65, 106, 218)",
-	},
-	evening: {
-		backgroundColor: "rgb(104, 114, 142)",
-	},
-	night: {
-		backgroundColor: "rgb(27, 34, 54)",
-	},
-})
 
 export default CustomStatusBar

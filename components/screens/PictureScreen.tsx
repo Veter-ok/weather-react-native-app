@@ -69,6 +69,7 @@ const PictureScreen:FC = () => {
 
 	return (
 		<PictureThemeContext.Provider value={{timeOfDay: timeOfDay, cloudCover: cloudCover, season: season}}>
+			<View style={{height: 700, backgroundColor: backgroundColors[`${timeOfDay}-${cloudCover}`], top: -700, marginBottom: -700}}></View>
 			<View style={[style.frame, {backgroundColor: backgroundColors[`${timeOfDay}-${cloudCover}`]}]}>
 				{/* <Clock/> */}
 				<Luminary timeOfDay={timeOfDay} cloudcover={currentlyWeather.cloudcover}/>
@@ -86,8 +87,7 @@ const style = StyleSheet.create({
 	frame: {
 		zIndex: -1,
 		width: "100%",
-		top: -50,
-		height: 500,
+		height: 520,
 		overflow: "hidden",
 	},
 })

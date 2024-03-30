@@ -6,7 +6,7 @@ import { convertStringOWAPIToDate } from "../utils/FormatDate";
 
 interface IWeatherOWAPIDataProviderProps {
 	city: CityType
-	children: JSX.Element[]
+	children: JSX.Element
 }
 
 const defaultCurrentlyWeather:ICurrentlyWeatherData = {

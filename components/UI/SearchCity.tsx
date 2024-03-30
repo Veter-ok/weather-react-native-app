@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text, FlatList, ScrollView} from 'react-native';
+import { View, StyleSheet, Text} from 'react-native';
 import { CityType } from '../../types/CityTypes';
 import { Input } from './Input';
 import React, {FunctionComponent as FC, useState} from "react";
@@ -53,21 +53,16 @@ export const SearchCity:FC<IPropsSearchCity> = ({setCity}) => {
 	}
 
 	return (
-		<View>
+		<View style={{top: 40}}>
 			<Input 
 				value={currentlyCity} 
 				onChange={onChangeValue}
 				onKeyDown={EnderDown}
 			/>
 			{cities.length > 1 ?
-				// <FlatList 
-				// 	style={style.results}
-				// 	data={cities} 
-				// 	renderItem={({item}) => <Text onPress={(e) => chooseCity(item)} style={style.cityBlock}>{item.name}, {item.country}</Text>}
-				// />
 				<View style={style.results}>
-					{cities.map((item) => 
-						<View>
+					{cities.map((item, index) => 
+						<View key={index}>
 							<Text onPress={(e) => chooseCity(item)} style={style.cityBlock}>{item.name}, {item.country}</Text>
 						</View>
 					)}

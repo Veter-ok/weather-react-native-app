@@ -29,32 +29,32 @@ const style = StyleSheet.create({
 		backgroundColor: "rgb(70, 207, 134)"
 	},
 	hill_1: {
-		top: 380,
+		top: 330,
 		left: "-20%", // -70
 		zIndex: 10,
 	},
 	hill_2: {
-		top: 350,
+		top: 320,
 		left: "20%", // 80
 		zIndex: 10,
 	},
 	hill_3: {
-		top: 380,
+		top: 330,
 		left: "60%", // 200
 		zIndex: 10,
 	},
 	hill_4: {
-		top: 400,
+		top: 350,
 		left: "-20%", // -70
 		zIndex: 10,
 	},
 	hill_5: {
-		top: 400,
+		top: 350,
 		left: "60%", // 90
 		zIndex: 10,
 	},
 	hill_6: {
-		top: 375,
+		top: 335,
 		left: "21%", // 90
 		zIndex: 10,
 	},

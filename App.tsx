@@ -1,11 +1,7 @@
 import { useState } from 'react';
-import {ScrollView} from 'react-native';
 import { WeatherDataProvider } from './context/WeatherDataProvider';
-import { SearchCity } from './components/UI/SearchCity';
-import PictureScreen from './components/screens/PictureScreen';
-import Content from './components/content/content';
 import { WeatherDataOWAPIProvider } from './context/WeatherDataProviderOWAPI';
-import CustomStatusBar from './components/UI/statusBar';
+import Content from './components/content/content';
 
 export default function App() {
 
@@ -17,12 +13,7 @@ export default function App() {
   return (
     <WeatherDataProvider coordinates={city.coordinates}>
       <WeatherDataOWAPIProvider city={city}>
-        <CustomStatusBar/>
-          <ScrollView>
-            <SearchCity setCity={setCity}/>
-            <PictureScreen/>
-            <Content city={city}/>
-          </ScrollView>
+       <Content city={city} setCity={setCity}/>
       </WeatherDataOWAPIProvider>
     </WeatherDataProvider>
   );
