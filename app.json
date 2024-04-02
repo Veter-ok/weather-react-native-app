@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "weatherApp",
+    "name": "Weather Forecast App",
     "slug": "weatherApp",
     "version": "1.0.1",
     "orientation": "portrait",
@@ -16,7 +16,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.veter.ok77.weatherApp"
+      "bundleIdentifier": "com.veter.ok77.WeatherForecastApp"
     },
     "android": {
       "versionCode": 1,
@@ -24,7 +24,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.veter.ok77.weatherApp"
+      "package": "com.veter.ok77.WeatherForecastApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
